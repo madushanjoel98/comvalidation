@@ -7,87 +7,16 @@
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <script src='/comval.js'></script>
 </head>
 
 <body>
+<h1>Application Content</h1>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", async () => {
-            try {
-                // Replace with your API URL
-                const response = await fetch("https://raw.githubusercontent.com/madushanjoel98/comvalidation/refs/heads/main/auram_2026.json");
-                const data = await response.json();
+  <script>
 
-                console.log(data);
+</script>
 
-                // Application unavailable
-                if (data.ava === false) {
-                    alert("Application is disabled.");
-
-                    // Attempt to close tab
-                    window.close();
-
-                    // Fallback if browser blocks close
-                    setTimeout(() => {
-                        window.location.href = "about:blank";
-                    }, 100);
-
-                    return;
-                }
-
-                // Development mode validation
-                if (data.dev === true) {
-                    const userToken = prompt("Enter application token:");
-
-                    if (
-                        !userToken ||
-                        userToken.trim() !== data["token-no"]
-                    ) {
-                        alert("Invalid token.");
-
-                        window.close();
-
-                        setTimeout(() => {
-                            window.location.href = "about:blank";
-                        }, 100);
-
-                        return;
-                    }
-                }
-
-                // License expiry check (optional)
-                if (data.expied_date && data.expied_date.trim() !== "") {
-                    const expiryDate = new Date(data.expied_date);
-                    const today = new Date();
-
-                    if (today > expiryDate) {
-                        alert("License has expired.");
-                        window.close();
-
-                        setTimeout(() => {
-                            window.location.href = "about:blank";
-                        }, 100);
-
-                        return;
-                    }
-                }
-
-                // Page can continue loading
-                console.log("Application validated successfully.");
-
-            } catch (error) {
-                console.error("Validation failed:", error);
-                alert("Unable to validate application.");
-
-                window.close();
-
-                setTimeout(() => {
-                    window.location.href = "about:blank";
-                }, 100);
-            }
-        });
-    </script>
 
 
 </body>
