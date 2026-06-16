@@ -1,5 +1,5 @@
 {
-    "ava": false,
+    "ava": true,
     "dev": true,
     "expied_date": "",
     "flag": "UP",
